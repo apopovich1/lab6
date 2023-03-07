@@ -16,15 +16,15 @@ def encoder(orgStr):
             i = str(int(i)+3)
         newStr = newStr + i
     return newStr
-def decoder(orgStr):
-    newStr = ""
-    for i in orgStr:
+def decoder(encoded_password):
+    decoded_string = ""
+    for i in encoded_password:
         if int(i) - 3 < 0:
             i = str(10 + (int(i)-3)) # goes the other way and add the negative number to ten
         else:
             i = str(int(i)-3)
-        newStr = newStr + i
-    return newStr
+        decoded_string += i
+    return decoded_string
 if __name__ == "__main__":
     bool = True
     pswd = ""
@@ -37,7 +37,7 @@ if __name__ == "__main__":
             pswd = encoder(input2)
             print("Your password has been encoded and stored! ")
         if input1 == 2:
-            print(f"The encoded password is {pswd}, and the original password is {input2} ")
+            print(f"The encoded password is {pswd}, and the original password is {decoder(pswd)} ")
         if input1 == 3:
             bool = False
             #resets the loop
